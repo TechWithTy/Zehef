@@ -10,14 +10,11 @@ async def duolingo(target: str):
             print(f"{RED}>{WHITE} Duolingo")
             return False
         else:
-            username = r.json()['users'][0]['username']
+            valid = r.json()['users'][0]['username']
+            
+            print(f"{GREEN}>{WHITE} Duolingo")
 
-            if username is not None and username != '':
-                print(f"{GREEN}>{WHITE} Duolingo ~ Name : {username}")
-                
-
-            else:
-                print(f"{GREEN}>{WHITE} Duolingo")
             return True
     except:
+        print(f"{RED}>{WHITE} Duolingo")
         return False

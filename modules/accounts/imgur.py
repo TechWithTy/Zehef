@@ -16,4 +16,5 @@ def imgur(target: str):
             print(f"{RED}>{WHITE} Imgur")
             return False
     except:
+        print(f"{RED}>{WHITE} Imgur")
         return False

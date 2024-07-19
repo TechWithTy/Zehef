@@ -13,4 +13,5 @@ async def spotify(target: str):
             print(f"{RED}>{WHITE} Spotify")
             return False
     except:
+        print(f"{RED}>{WHITE} Spotify")
         return None

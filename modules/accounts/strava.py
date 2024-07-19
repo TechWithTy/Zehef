@@ -16,4 +16,5 @@ async def strava(target: str):
             print(f"{RED}>{WHITE} Strava")
             return False
     except:
+        print(f"{RED}>{WHITE} Strava")
         return None

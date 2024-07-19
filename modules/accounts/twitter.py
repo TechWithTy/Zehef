@@ -13,4 +13,5 @@ async def x(target: str):
             print(f"{RED}>{WHITE} 𝕏")
             return False
     except:
+        print(f"{RED}>{WHITE} 𝕏")
         return None

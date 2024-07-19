@@ -19,4 +19,5 @@ async def pinterest(target: str):
             return False
     
     except:
+        print(f"{RED}>{WHITE} Pinterest")
         return False

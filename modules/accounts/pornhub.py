@@ -12,7 +12,10 @@ def pornhub(target: str):
         token = soup.find(attrs={'name': 'token'}).get('value')
 
         params = {'token': token}
-        data = {'check_what': 'email', 'email': target}
+        data = {
+            'check_what': 'email', 
+            'email': target
+        }
 
         api = s.post(f"https://fr.pornhub.com/user/create_account_check", params=params, data=data)
         s.close()
@@ -29,4 +32,5 @@ def pornhub(target: str):
 
     except:
         s.close()
+        print(f"{RED}>{WHITE} Pornhub")
         return None
