@@ -14,7 +14,6 @@ from .modules.accounts.deezer import deezer
 from .modules.accounts.imgur import imgur
 from .modules.accounts.instagram import instagram
 from .modules.breaches.pastedumper import Pastebin_Dumper
-from .modules.breaches.pwned import pwned
 
 
 async def zehef_service(emails: list[str]):
@@ -23,7 +22,6 @@ async def zehef_service(emails: list[str]):
 
     for target in emails:
         if re.match(EMAIL_REGEX, target):
-            pwned_output = pwned(target)
             chess_output = await chess(target)
             deezer_output = deezer(target)
             duolingo_output = await duolingo(target)
@@ -37,7 +35,6 @@ async def zehef_service(emails: list[str]):
             strava_output = await strava(target)
             x_output = await x(target)
             return {
-                "pwned": pwned_output,
                 "chess": chess_output,
                 "deezer": deezer_output,
                 "duolingo": duolingo_output,

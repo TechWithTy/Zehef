@@ -31,9 +31,13 @@ async def instagram(target: str):
 
         if code == 'email_is_taken':
             print(f"{GREEN}>{WHITE} Instagram")
+            return True
         else:
             print(f"{RED}>{WHITE} Instagram")
+            return False
     except (KeyError, IndexError) as e:
         print(f"{RED}>{WHITE} Instagram error: {str(e)}")
+        return None
     except Exception as e:
         print(f"{RED}>{WHITE} Error: {str(e)}")
+        return None
