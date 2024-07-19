@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 async def duolingo(target: str):
 
@@ -8,15 +8,16 @@ async def duolingo(target: str):
     try:
         if """{"users":[]}""" in r.text:
             print(f"{RED}>{WHITE} Duolingo")
-
+            return False
         else:
             username = r.json()['users'][0]['username']
 
             if username is not None and username != '':
                 print(f"{GREEN}>{WHITE} Duolingo ~ Name : {username}")
+                
 
             else:
                 print(f"{GREEN}>{WHITE} Duolingo")
-    
+            return True
     except:
-        pass
+        return False

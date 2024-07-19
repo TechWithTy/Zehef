@@ -1,5 +1,5 @@
-from lib.colors import *
-from lib.Requests import Request
+from ...lib.colors import *
+from ...lib.Requests import Request
 
 async def x(target: str):
 
@@ -8,9 +8,9 @@ async def x(target: str):
     try:
         if r.json()['taken']:
             print(f"{GREEN}>{WHITE} 𝕏")
-
+            return True
         else:
             print(f"{RED}>{WHITE} 𝕏")
-
+            return False
     except:
-        pass
+        return None

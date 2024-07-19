@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 async def spotify(target: str):
 
@@ -8,9 +8,9 @@ async def spotify(target: str):
     try:
         if r.json()['status'] == 20:
             print(f"{GREEN}>{WHITE} Spotify")
-
+            return True
         else:
             print(f"{RED}>{WHITE} Spotify")
-
+            return False
     except:
-        pass
+        return None

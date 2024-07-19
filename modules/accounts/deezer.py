@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 def deezer(target: str):
     try:
@@ -17,17 +17,17 @@ def deezer(target: str):
 
         api = s.post(f"https://www.deezer.com/ajax/gw-light.php", params=params, data='{"EMAIL":"'+ target +'"}')
 
+        s.close()
         if api.json()['results']['availability'] == True:
             print(f"{RED}>{WHITE} Deezer")
+            return False
 
         elif api.json()['results']['availability'] == False:
             print(f"{GREEN}>{WHITE} Deezer")
-
+            return True
         else:
             print(f"{RED}>{WHITE} Deezer")
-
-        s.close()
-
+            return False
     except:
         s.close()
         pass

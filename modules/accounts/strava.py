@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 async def strava(target: str):
 
@@ -8,12 +8,12 @@ async def strava(target: str):
     try:
         if "false" in req.text:
             print(f"{GREEN}>{WHITE} Strava")
-
+            return True
         elif "true" in req.text:
             print(f"{RED}>{WHITE} Strava")
-
+            return False
         else:
             print(f"{RED}>{WHITE} Strava")
-            
+            return False
     except:
-        pass
+        return None

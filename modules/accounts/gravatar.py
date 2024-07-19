@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 import hashlib
 
 async def gravatar(target: str):
@@ -12,9 +12,10 @@ async def gravatar(target: str):
     try:
         if "User not found" in r.text:
             print(f"{RED}>{WHITE} Gravatar")
-
+            return False
         else:
             print(f"{GREEN}>{WHITE} Gravatar ~ Name : {r.json()['entry'][0]['displayName']}")
-    
+            return True
     except:
-        pass
+        return False
+        

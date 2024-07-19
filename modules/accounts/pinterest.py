@@ -1,5 +1,5 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 async def pinterest(target: str):
 
@@ -13,10 +13,10 @@ async def pinterest(target: str):
     try:
         if r.json()["resource_response"]["data"]:
             print(f"{GREEN}>{WHITE} Pinterest")
-
+            return True
         else:
             print(f"{RED}>{WHITE} Pinterest")
-
+            return False
     
     except:
-        pass
+        return False

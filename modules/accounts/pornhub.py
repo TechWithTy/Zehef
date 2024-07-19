@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 def pornhub(target: str):
     try:
@@ -15,18 +15,18 @@ def pornhub(target: str):
         data = {'check_what': 'email', 'email': target}
 
         api = s.post(f"https://fr.pornhub.com/user/create_account_check", params=params, data=data)
+        s.close()
 
         if api.json()['email'] == "create_account_passed":
             print(f"{RED}>{WHITE} Pornhub")
-
+            return False
         elif api.json()['email'] == "create_account_failed":
             print(f"{GREEN}>{WHITE} Pornhub")
-
+            return True
         else:
             print(f"{RED}>{WHITE} Pornhub")
-
-        s.close()
+            return False
 
     except:
         s.close()
-        pass
+        return None
