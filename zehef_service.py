@@ -19,7 +19,7 @@ from .modules.breaches.pastedumper import Pastebin_Dumper
 async def zehef_service(emails: list[str]):
 
     EMAIL_REGEX = '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'
-
+    results = []
     for target in emails:
         if re.match(EMAIL_REGEX, target):
             chess_output = await chess(target)
@@ -34,7 +34,7 @@ async def zehef_service(emails: list[str]):
             spotify_output = await spotify(target)
             strava_output = await strava(target)
             x_output = await x(target)
-            return {
+            results.append({
                 "chess": chess_output,
                 "deezer": deezer_output,
                 "duolingo": duolingo_output,
@@ -47,7 +47,8 @@ async def zehef_service(emails: list[str]):
                 "spotify": spotify_output,
                 "strava": strava_output,
                 "x": x_output
-            }
+            })
 
         else:
             print("Invalid email format")
+    return results
