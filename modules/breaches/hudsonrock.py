@@ -1,7 +1,8 @@
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 import json
 from datetime import datetime
+
 
 class Cavalier:
     def __init__(self, email: str) -> None:
@@ -15,12 +16,15 @@ class Cavalier:
             data = response.json()['stealers'][0]
 
             print(f"[{RED}HudsonRock{WHITE}] Email's result :")
-            print("> Total service corporate :", data.get('total_corporate_services', '/'))
-            print("> Total user services :", data.get('total_user_services', '/'))
+            print("> Total service corporate :", data.get(
+                'total_corporate_services', '/'))
+            print("> Total user services :", data.get(
+                'total_user_services', '/'))
 
             time_iso = data.get('date_compromised')
 
-            t_datetime = datetime.fromisoformat(time_iso.replace("Z", "+00:00"))
+            t_datetime = datetime.fromisoformat(
+                time_iso.replace("Z", "+00:00"))
             date = t_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
             print("> Date compromised :", date)
@@ -34,10 +38,21 @@ class Cavalier:
 
                 print("> Top passwords :", ', '.join(top_passwords))
                 print("> Top logins :", ', '.join(top_logins))
-
+                return {
+                    "compromised": True,
+                    "passwords": top_passwords,
+                    "logins": top_logins
+                }
             except:
+
                 print("> Top passwords : /")
                 print("> Top logins : /")
+                return {
+                    "compromised": True
+                }
 
-        except(KeyError, json.JSONDecodeError):
+        except (KeyError, json.JSONDecodeError):
             print(f"[{RED}HudsonRock{WHITE}] Email Safe")
+            return {
+                "compromised": False
+            }

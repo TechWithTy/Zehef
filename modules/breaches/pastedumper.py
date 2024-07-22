@@ -41,6 +41,12 @@ class Pastebin_Dumper:
 
             else:
                 continue
-
+        
+        
         if self.numbs == 0:
             print(f"{GREEN}>{WHITE} No paste found.")
+            
+        return {
+            "number_of_pastes": self.numbs,
+             "link": self.links
+        }

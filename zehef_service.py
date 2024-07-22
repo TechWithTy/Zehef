@@ -1,6 +1,7 @@
 import re
 import asyncio
 
+from .modules.breaches.hudsonrock import Cavalier
 from .modules.accounts.twitter import x
 from .modules.accounts.gravatar import gravatar
 from .modules.accounts.spotify import spotify
@@ -22,6 +23,8 @@ async def zehef_service(emails: list[str]):
     results = []
     for target in emails:
         if re.match(EMAIL_REGEX, target):
+            hudsonrock_output = await (Cavalier(target)).loader()
+            pastebin_output = await Pastebin_Dumper(target).paste_check()
             chess_output = await chess(target)
             deezer_output = deezer(target)
             duolingo_output = await duolingo(target)
@@ -35,7 +38,9 @@ async def zehef_service(emails: list[str]):
             strava_output = await strava(target)
             x_output = await x(target)
             results.append({
-                "chess": chess_output,
+                "pastbin": pastebin_output,
+                "hudsonrock": hudsonrock_output,
+                "chess.com": chess_output,
                 "deezer": deezer_output,
                 "duolingo": duolingo_output,
                 "github": github_output,
