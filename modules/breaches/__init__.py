@@ -1,2 +1,2 @@
-from modules.breaches.hudsonrock import Cavalier
-from modules.breaches.pastedumper import Pastebin_Dumper
+from .hudsonrock import Cavalier
+from .pastedumper import Pastebin_Dumper

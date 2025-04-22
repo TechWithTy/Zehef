@@ -1,9 +1,11 @@
 import argparse
 import re
+
+from app.osint.Zehef.modules import *
+
 from .colors import *
-from .update import Version_Checker
 from .emails_gen import Email_Gen
-from modules import *   
+from .update import Version_Checker
 
 
 async def parser():
@@ -16,7 +18,7 @@ async def parser():
         nargs="?",
         type=str,
         default=None,
-        help="Search informations on email (breaches, pastes, accounts ...)"
+        help="Search informations on email (breaches, pastes, accounts ...)",
     )
 
     args = parser.parse_args()
@@ -24,11 +26,12 @@ async def parser():
     if args.email:
         target = args.email
 
-        EMAIL_REGEX = r'[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'
+        EMAIL_REGEX = r"[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}"
 
         if re.match(EMAIL_REGEX, target):
-
-            print(f"\n🔎 Currently researching on the email '{RED}{target}{WHITE}' {YELLOW}...{WHITE}\n")
+            print(
+                f"\n🔎 Currently researching on the email '{RED}{target}{WHITE}' {YELLOW}...{WHITE}\n"
+            )
 
             print(f"\n{PURPLE}📁 Leak search {YELLOW}...{WHITE}\n")
 
@@ -57,7 +60,6 @@ async def parser():
             await spotify(target)
             await strava(target)
             await x(target)
-            
 
             print(f"\n\n{PINK}📧 Email generation{WHITE}\n")
             Email_Gen(target).printer()

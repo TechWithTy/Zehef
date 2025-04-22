@@ -1,5 +1,7 @@
 import requests
-from lib.colors import *
+
+from ...lib.colors import *
+
 
 def imgur(target: str):
 

@@ -1,2 +1,2 @@
-from modules.breaches import *
-from modules.accounts import *
+from .breaches import *
+from .accounts import *

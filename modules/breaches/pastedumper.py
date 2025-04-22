@@ -1,7 +1,7 @@
 import random
 from bs4 import BeautifulSoup
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 class Pastebin_Dumper:
     def __init__(self, target: str) -> None:

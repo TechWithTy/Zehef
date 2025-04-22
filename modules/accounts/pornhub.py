@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-from lib.Requests import Request
-from lib.colors import *
+from ...lib.Requests import Request
+from ...lib.colors import *
 
 def pornhub(target: str):
     try:
